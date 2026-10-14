@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f7">
+  <meta name="description" content="Understand medical and lab reports in plain language. Educational support, not a diagnosis.">
+  <title>MedPlain — Medical reports, made clearer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="MedPlain home"><span class="brand-mark">✳</span><span>medplain</span></a>
+    <div class="top-note"><span class="status-dot"></span> Clearer health information</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="eyebrow-icon">✦</span> YOUR REPORT, IN PLAIN LANGUAGE</div>
+      <h1>Medical reports can be<br><span class="gradient-text">hard to read.</span></h1>
+      <p class="hero-copy">Turn confusing medical terms into clear explanations. Upload a report and get a simple, structured guide to what it says.</p>
+      <div class="trust-row">
+        <span><span class="check">✓</span> Plain-language summaries</span>
+        <span><span class="check">✓</span> Values & ranges explained</span>
+        <span><span class="check">✓</span> Questions for your doctor</span>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Upload a report">
+      <div class="upload-card">
+        <div class="card-heading">
+          <div>
+            <p class="section-kicker">GET STARTED</p>
+            <h2>Let’s understand your report</h2>
+            <p class="muted">Choose a clear photo or PDF of your lab report.</p>
+          </div>
+          <div class="document-icon" aria-hidden="true">▤</div>
+        </div>
+
+        <form id="uploadForm">
+          <label class="dropzone" id="dropzone" for="reportInput">
+            <input id="reportInput" name="report" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,application/pdf,image/png,image/jpeg,image/webp" hidden>
+            <span class="upload-symbol" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4.5 15.5v3A1.5 1.5 0 0 0 6 20h12a1.5 1.5 0 0 0 1.5-1.5v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <strong id="fileTitle">Drop your report here</strong>
+            <span id="fileSubtitle">or <span class="browse">browse files</span></span>
+            <span class="file-hint">PDF, JPG, PNG or WEBP · Up to 12 MB</span>
+          </label>
+          <div class="file-selected" id="fileSelected" hidden>
+            <span class="file-badge">FILE</span><span class="file-name" id="fileName"></span><button type="button" id="removeFile" class="remove-file" aria-label="Remove selected file">×</button>
+          </div>
+          <label class="consent"><input type="checkbox" id="privacyCheck"><span>I understand this is educational information, not a medical diagnosis. I will avoid uploading a report unless I’m comfortable sharing it for processing.</span></label>
+          <button class="primary-btn" id="submitBtn" type="submit"><span>Explain my report</span><span aria-hidden="true">↗</span></button>
+          <p class="upload-error" id="errorMessage" role="alert" hidden></p>
+        </form>
+        <div class="privacy-note"><span aria-hidden="true">♧</span><span>Uploads are processed to generate an explanation and are not saved by this starter app to a database. The AI service receives the file to process it.</span></div>
+      </div>
+
+      <aside class="side-panel">
+        <div class="side-top">
+          <div class="sparkle">✧</div>
+          <p class="section-kicker">WHAT YOU’LL GET</p>
+          <h3>Clarity, one result at a time.</h3>
+          <p class="muted">A helpful starting point for a better conversation with your healthcare professional.</p>
+        </div>
+        <div class="benefit-list">
+          <div class="benefit"><span class="benefit-icon green">01</span><div><strong>Quick overview</strong><p>A simple summary of what the report contains.</p></div></div>
+          <div class="benefit"><span class="benefit-icon blue">02</span><div><strong>Understand the numbers</strong><p>Values and lab reference ranges, when visible.</p></div></div>
+          <div class="benefit"><span class="benefit-icon lilac">03</span><div><strong>Prepare for your visit</strong><p>Useful questions to take to your doctor.</p></div></div>
+        </div>
+        <div class="disclaimer-mini"><span>ⓘ</span><p>AI can misread reports or miss context. Always confirm medical decisions with a qualified clinician.</p></div>
+      </aside>
+    </section>
+
+    <section class="result-section" id="resultSection" hidden>
+      <div class="result-header"><div><p class="section-kicker">YOUR EXPLANATION</p><h2>Here’s your report, made clearer.</h2></div><button class="secondary-btn" id="copyBtn" type="button">Copy summary</button></div>
+      <div class="result-card"><div class="result-status"><span class="status-dot"></span> AI-generated explanation · Review with your clinician</div><article id="resultContent" class="result-content"></article></div>
+      <p class="result-disclaimer">This explanation is for education only and is not a diagnosis or treatment recommendation. It may contain errors, especially if the report is blurry or incomplete.</p>
+    </section>
+
+    <section class="how-section">
+      <div><p class="section-kicker">SIMPLE BY DESIGN</p><h2>Less decoding.<br>More understanding.</h2></div>
+      <div class="how-steps">
+        <div><span>1</span><strong>Upload</strong><p>Add a clear PDF or image of the report.</p></div>
+        <div><span>2</span><strong>Translate</strong><p>AI explains the visible details in everyday language.</p></div>
+        <div><span>3</span><strong>Discuss</strong><p>Use the summary to ask your clinician better questions.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">✳</span><span>medplain</span></a><p>Made to make health information easier to understand.</p><p class="footer-warning">Not for emergencies. Not a replacement for professional medical care.</p></footer>
+  <script src="/app.js"></script>
+</body>
+</html>
