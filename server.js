@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 const MAX_FILE_BYTES = 12 * 1024 * 1024;
 const allowedTypes = new Set(["application/pdf", "image/png", "image/jpeg", "image/webp"]);
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname));
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: MAX_FILE_BYTES, files: 1 },
